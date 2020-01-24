@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Formulario</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<!-- Trigger the modal with a button -->
+		<!-- Boton de nuevo, manda al modal -->
+		<button type="button" class="btn btn-secondary" data-toggle="modal"
+			data-target="#myModal">Nuevo</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" role="dialog" >
+			<div class="modal-dialog" >
+				<!-- Modal content-->
+				<div class="modal-content" >
+					<div class="modal-header">
+
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Agregar Nuevo</h4>
+					</div>
+					<!--Inputs-->
+					<div class="form-group">
+						<label for="id">Id:</label> <input type="number"
+							class="form-control" id="id">
+					</div>
+
+					<div class="form-group">
+						<label for="nombre">Nombre:</label> <input type="text"
+							class="form-control" id="nombre">
+					</div>
+
+					<div class="form-group">
+						<label for="direccion">Direccion:</label> <input type="text"
+							class="form-control" id="direccion">
+					</div>
+
+					<div class="form-group">
+						<label for="telefono">Telefono:</label> <input type="number"
+							class="form-control" id="telefono">
+					</div>
+
+					<button id="guardar"  class="btn btn-primary" data-dismiss="modal" type="button">Guardar</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+					<br>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Direccion</th>
+					<th>Telefono</th>
+					<th>Operaciones</th>
+				</tr>
+			</thead>
+			<tbody id="tdatos">
+			</tbody>
+		</table>
+	</div>
+	<!--Para JQUERY   van al final-->
+	<script
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<script>
+   $(document).ready(function(){
+	   
+	$('#guardar').click(function(){
+		
+		var id = $('#id').val();
+		var nombre = $('#nombre').val();
+		var direccion = $('#direccion').val();
+		var telefono = $('#telefono').val();
+	//manda a llamar el id  del tbody	
+	$('#tdatos').append(''
+			+'<tr>'+
+			'<td>'+ id+'</td>'
+			+'<td>'+ nombre+'</td>'
+			+'<td>'+ direccion+'</td>'
+			+'<td>'+ telefono+'</td>'
+			+'<td>'+
+			'<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">'+ 'Editar'+'</button>'+
+			'<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">'+ 'Eliminar'+'</button>'+
+			'</td>'+
+			'</tr>'
+		);
+	});	
+   });
+   </script>
+</body>
+
+
+</html>

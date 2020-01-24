@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Insert title here</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	</head>
+	
+	<!--se crea el boton para desplegar el modal  -->
+	
+		<div class="container">
+			<!-- Trigger the modal with a button -->
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Nuevo</button>
+				
+			<!-- Modal con el formulario -->
+			<div class="modal fade" id="myModal" role="dialog">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Form</h4>
+						</div>
+						<!--Inputs-->
+							<div class="form-group">
+							<label for="id">Id:</label>
+							<input type="text" class="form-control border border-dark" id="id">
+							</div>
+							<div class="form-group">
+							<label for="nombre">Nombre:</label>
+							<input type="text" class="form-control border border-dark" id="nombre">
+							</div>
+							<div class="form-group">
+							<label for="direccion">Direccion:</label>
+							<input type="text" class="form-control border border-dark" id="direccion">
+							</div>
+							<div class="form-group">
+							<label for="telefono">Telefono:</label>
+							<input type="text" class="form-control border border-dark" id="telefono">
+							</div>
+							<button id="guardar" onclick="guardar()" class="btn btn-sucsses" type="button">Guardar</button>
+							
+						<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<!-- se crea la tabla donde se guardaran los datos del modal -->
+		<div class="container">
+		<table class="table" border="2">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Direccion</th>
+					<th>Telefono</th>
+					<th>Operaciones</th>
+				</tr>
+			</thead>
+			<tbody id="datos">
+			</tbody>
+		</table>
+		</div>
+			
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+		function guardar(){
+			 <!-- con la funcion var se declaran las variables a agiardar--> 
+		    var id = document.getElementById("id").value;
+		    var nombre = document.getElementById("nombre").value;
+		    var direccion = document.getElementById("direccion").value;
+		    var telefono = document.getElementById("telefono").value;
+            <!--tomar los datos del formulario-->
+		    var fila="<tr><td>"+ id +"</td><td>"+ nombre +"</td><td>"+ direccion +"</td><td>" + telefono + "</td> <td>" + "<button data-toggle="modal" data-target="#myModal">Editar</button>" + "<button>Eliminar</button>" + "</td> </tr>";
+            <!--mostrar los datos del formulario en la tabla-->
+		    var btn = document.createElement("TR");
+		   	btn.innerHTML=fila;
+		    document.getElementById("datos").appendChild(btn);
+		}
+		</script>
+	</body>
+</html>
